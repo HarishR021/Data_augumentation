@@ -6,8 +6,8 @@ import numpy as np
 from imgaug import augmenters as iaa
 
 # Set your input and output directories
-input_directory = "C:\\Users\\lenovo\\Downloads\\dataugm\\folderL"
-output_directory = r"C:\\Users\\lenovo\\Downloads\\dataugm\\augresfolL"
+input_directory = "C:\\Users\\lenovo\\Downloads\\dataugm\\augresfolL"
+output_directory = r"C:\Users\lenovo\Downloads\dataugm\augresfolL"
 
 # Create output directory if it doesn't exist
 if not os.path.exists(output_directory):
@@ -37,4 +37,6 @@ for filename in os.listdir(input_directory):
 
     # Save augmented images
     for i, augmented_image in enumerate(augmented_images):
-        Image.fromarray(augmented_image).save(os.path.join(output_directory, f"{filename.split('.')[0]}_aug_{i}.jpg"))
+        # Save multiple augmented images for each input image
+        for j in range(5):  # Change 5 to the number of augmented images you want per input image
+            Image.fromarray(augmented_image).save(os.path.join(output_directory, f"{filename.split('.')[0]}_aug_{i * 5 + j}.jpg"))
